@@ -1,14 +1,68 @@
 # ProgettoOOP_esame
 progetto appello di Febbraio 2021 OOP
 
-[Start](Start)
+[Start](#start)
 
-- [Contributi](Contributi)
+- [Contributi](#contributi)
 
-## Start:
+c
 
 
-## Contributi:
+c
+c
+
+
+c
+
+c
+c
+
+
+c
+
+
+c
+c
+c
+
+
+c
+
+
+c
+c
+c
+c
+c
+
+c
+
+
+cc
+
+c
+c
+c
+c
+c
+c
+
+c
+
+c
+
+c
+
+c
+
+c
+
+c
+
+# Start:
+
+
+# Contributi:
 Maurizio Candela
 
 Paolo Cappelletti
