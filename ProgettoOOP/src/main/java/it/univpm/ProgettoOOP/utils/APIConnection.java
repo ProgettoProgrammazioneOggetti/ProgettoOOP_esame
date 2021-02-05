@@ -52,7 +52,7 @@ public class APIConnection {
 			BufferedReader reader=new BufferedReader(new InputStreamReader(URL.getInputStream()));
 			String input=reader.readLine();
 			JSONObject download=(JSONObject) parser.parse(input);
-			embedded=(JSONObject) download.get("_embedded");				
+			embedded=(JSONObject) download.get("_embedded");   		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
