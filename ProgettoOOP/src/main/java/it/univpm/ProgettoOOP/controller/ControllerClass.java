@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 
 import org.springframework.web.bind.annotation.*;
 
+import it.univpm.ProgettoOOP.database.Database;
 import it.univpm.ProgettoOOP.model.EventiPerGenere;
 import it.univpm.ProgettoOOP.model.EventiTotale;
 import it.univpm.ProgettoOOP.model.Ricerca;
@@ -54,4 +55,17 @@ class ControllerClass {
 		output = statistics.getOutput();
 		return output;
 	}
+	
+	public JSONArray getDatabase() {
+		JSONArray output;
+		Database data = new Database();
+		output = data.getDatabase();
+		return output;
+	}
+	
+	public void resetDatabse() {
+		
+	}
+	
+	//public setDatabase(JSONArray database) {}
 }
