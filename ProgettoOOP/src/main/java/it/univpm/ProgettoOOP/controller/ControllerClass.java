@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 
 import org.springframework.web.bind.annotation.*;
 
+import it.univpm.ProgettoOOP.model.EventiPerGenere;
 import it.univpm.ProgettoOOP.model.EventiTotale;
 import it.univpm.ProgettoOOP.model.Ricerca;
 import it.univpm.ProgettoOOP.model.Statistic;
@@ -35,5 +36,13 @@ class ControllerClass {
 		output = events.getOutput();
 		return output;
 		
+	}
+	
+	@RequestMapping(value ="/genevents", method=RequestMethod.POST)
+	public JSONArray eventiPerGenere(@RequestBody JSONObject genfilter) {
+		JSONArray output;
+		EventiPerGenere genevents = new EventiPerGenere(genfilter);
+		output = genevents.getOutput();
+		return output;
 	}
 }
