@@ -14,6 +14,7 @@ import it.univpm.ProgettoOOP.model.EventiPerGenere;
 import it.univpm.ProgettoOOP.model.EventiTotale;
 import it.univpm.ProgettoOOP.model.Ricerca;
 import it.univpm.ProgettoOOP.model.Statistic;
+import it.univpm.ProgettoOOP.model.Stats;
 /**
  * @author Maurizio
  * @author Paolo
@@ -43,6 +44,14 @@ class ControllerClass {
 		JSONArray output;
 		EventiPerGenere genevents = new EventiPerGenere(genfilter);
 		output = genevents.getOutput();
+		return output;
+	}
+	
+	@RequestMapping(value="/statistics", method=RequestMethod.POST)
+	public JSONArray stats(@RequestBody JSONObject stats) {
+		JSONArray output;
+		Stats statistics = new Stats(stats);
+		output = statistics.getOutput();
 		return output;
 	}
 }
