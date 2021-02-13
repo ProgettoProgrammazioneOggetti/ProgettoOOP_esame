@@ -1,6 +1,7 @@
 package it.univpm.ProgettoOOP.database;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
@@ -14,37 +15,34 @@ import it.univpm.ProgettoOOP.exception.DatabaseNotValid;
 import it.univpm.ProgettoOOP.utils.APIConnection;
 
 public class Database {
-	private JSONArray database;
 	
 	public Database() {
 		APIConnection data=new APIConnection();
 		data.openConnection();
-		this.database=data.getData();
 		Database.setDatabaseInFile(data.getData());
 	}
 	public Database(JSONArray datab) throws DatabaseNotValid{
 		this();
 		boolean correct=true;
 		Iterator i=datab.iterator();
+		JSONArray database=Database.getDatabaseFromFile();
 		while(i.hasNext()) {
 			JSONObject temp=(JSONObject) i.next();
 			if(temp.get("i")==null)
 				correct=false;
 		}
 		if(correct) {
-		this.database=datab;
 		Database.setDatabaseInFile(datab);}
 		else
 			throw new DatabaseNotValid(); 
 		
 	}
-	public JSONArray getDatabase() {
-		return database;
-	}
 	public static JSONArray getDatabaseFromFile()  {
 		JSONArray output=new JSONArray();
 		JSONParser parser=new JSONParser();
 		try {
+			File file=new File("database.json");
+			System.out.println(file.getAbsolutePath());
 			output=(JSONArray) parser.parse("database.json");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
