@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import it.univpm.ProgettoOOP.database.Database;
+import it.univpm.ProgettoOOP.exception.DatabaseNotValid;
 import it.univpm.ProgettoOOP.model.EventiPerGenere;
 import it.univpm.ProgettoOOP.model.EventiTotale;
 import it.univpm.ProgettoOOP.model.Ricerca;
@@ -56,16 +57,33 @@ class ControllerClass {
 		return output;
 	}
 	
+	@RequestMapping(value="/database", method=RequestMethod.GET)
 	public JSONArray getDatabase() {
-		JSONArray output;
-		Database data = new Database();
-		output = data.getDatabase();
+		JSONArray output = Database.getDatabaseFromFile();
 		return output;
 	}
 	
-	public void resetDatabse() {
-		
+	@RequestMapping(value="/resetDatabase", method=RequestMethod.GET)
+	public String resetDatabase() {
+		String done = "Reset riuscito con successo";
+		String notDone="Il database non si è aggiornato";
+		JSONArray oldVersion = Database.getDatabaseFromFile();
+		Database data= new Database();
+		JSONArray newVersion = Database.getDatabaseFromFile();
+		if(newVersion.equals(oldVersion))
+			return notDone;
+		else
+			return done;
 	}
 	
-	//public setDatabase(JSONArray database) {}
+	@RequestMapping(value="/setDatabase" , method=RequestMethod.GET)
+	public String setDatabase() {
+		JSONArray data = Database.getDatabaseFromFile();
+		try {
+			Database database= new Database(data);
+		} catch(DatabaseNotValid e) {
+			e.printStackTrace();
+		}
+		return "Database correttamente caricato";
+	}
 }
