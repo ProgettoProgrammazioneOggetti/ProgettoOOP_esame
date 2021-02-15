@@ -25,7 +25,7 @@ import it.univpm.ProgettoOOP.model.Stats;
 class ControllerClass {
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
-	public JSONArray cercaEvento(@RequestParam(name = "name") String name,@RequestParam(name= "keyword") String keyword) {
+	public JSONArray cercaEvento(@RequestParam(name = "name", defaultValue= "") String name,@RequestParam(name= "keyword") String keyword) {
 		JSONArray output;
 		Ricerca search = new Ricerca(name, keyword);
 		output = search.getOutput();

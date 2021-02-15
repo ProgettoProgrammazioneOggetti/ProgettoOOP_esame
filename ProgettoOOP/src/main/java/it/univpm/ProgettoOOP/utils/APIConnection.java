@@ -47,7 +47,7 @@ public class APIConnection {
 		JSONParser parser=new JSONParser();
 		JSONObject embedded=null;
 		try {
-			String url="https://app.ticketmaster.com/discovery/v2/events?startDateTime=2021-01-01T00:00:00Z&endDateTime=2021-12-31T23:59:59Z&keyword="+keyword.get(0)+"&apikey="+APIkey;
+			String url="https://app.ticketmaster.com/discovery/v2/events?startDateTime=2021-01-01T00:00:00Z&endDateTime=2021-12-31T23:59:59Z&stateCode="+state+"&keyword="+keyword.get(0)+"&apikey="+APIkey;
 			URLConnection URL=new URL(url).openConnection();
 			BufferedReader reader=new BufferedReader(new InputStreamReader(URL.getInputStream()));
 			String input=reader.readLine();
