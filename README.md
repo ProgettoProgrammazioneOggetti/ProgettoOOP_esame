@@ -34,21 +34,21 @@ Di seguito si ha il diagramma delle sequenze di questa rotta
 ### 2) Ricerca di tutti gli eventi
 `POST /events`
 
-Questa rotta permette di cercare tutti gli eventi [filtrandoli](#Filtro) come spiegato successivamente. 
+Questa rotta permette di cercare tutti gli eventi [filtrandoli](#filtro) come spiegato successivamente. 
 Di seguito si ha il diagramma delle sequenze di questa rotta
 ![Events Sequence Diagram](https://github.com/ProgettoProgrammazioneOggetti/ProgettoOOP_esame/blob/main/eventsSequence.png)
 
 ### 3) Ricerca eventi per genere
 `POST /genevents`
 
-Questa rotta permette di cercare tutti gli eventi raggruppandoli per genere e [filtrandoli](#Filtro) come spiegato successivamente. 
+Questa rotta permette di cercare tutti gli eventi raggruppandoli per genere e [filtrandoli](#filtro) come spiegato successivamente. 
 Di seguito si ha il diagramma delle sequenze di questa rotta
 ![Genre Sequence Diagram](https://github.com/ProgettoProgrammazioneOggetti/ProgettoOOP_esame/blob/main/genreSequence.png)
 
 ### 4) Calcolo di statistiche riguardo gli eventi
 `POST /statistics`
 
-Questa rotta permette di ottenere in output i mesi col maggior numero di eventi, quelli con meno e il valore medio per ogni stato presente nel filtro, [filtrando](#Filtro) il database anche per gli altri campi. 
+Questa rotta permette di ottenere in output i mesi col maggior numero di eventi, quelli con meno e il valore medio per ogni stato presente nel filtro, [filtrando](#filtro) il database anche per gli altri campi. 
 Di seguito si ha il diagramma delle sequenze di questa rotta
 ![Statistics Sequence Diagram](https://github.com/ProgettoProgrammazioneOggetti/ProgettoOOP_esame/blob/main/statsSequence.png)
 
@@ -62,9 +62,24 @@ Poichè il database viene salvato in locale, esso può essere liberamente modifi
 Questra rotta permette sia di resettare il database, nel caso in cui si siano fatte delle modifiche che però si vogliono cancellare, sia di aggiornarlo, quindi ottenere eventi inseriti dell'API esterna successivamente all'avvio dell'API.
 
 ## Filtro
-Per un corretto utilizzo dell'API, il filtro deve essere un JSONObject con al suo interno una struttura simile a quella qui mostrata.
-`[
-]   `
+Per un corretto utilizzo dell'API, il filtro deve essere un JSONObject con al suo interno una struttura simile a quella qui mostrata:
+
+```
+{
+  "name" : {  
+      "$in" : [FL, CA, CO]
+      },
+  "genre" : {
+      "$in" : [music, sport]
+      },
+  "keywords" : {
+      "$in" : [music, football]
+      },
+  "date" : {
+      "$bt" : [2021:07:01, 2021:10:20]
+      }
+} 
+```
 
 La seguente tabella spiega i vari filtri applicabili e in quali modi:
 | Campo | Tipologia | Contenuto | Descrizione |
