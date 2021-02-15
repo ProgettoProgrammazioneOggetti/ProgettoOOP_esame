@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import it.univpm.ProgettoOOP.database.Database;
 import it.univpm.ProgettoOOP.exception.DatabaseNotValid;
+import it.univpm.ProgettoOOP.exception.DateNotValid;
+import it.univpm.ProgettoOOP.exception.GenreNotValid;
+import it.univpm.ProgettoOOP.exception.KeywordNotValid;
+import it.univpm.ProgettoOOP.exception.RangeNotValid;
+import it.univpm.ProgettoOOP.exception.StateNotValid;
 import it.univpm.ProgettoOOP.model.EventiPerGenere;
 import it.univpm.ProgettoOOP.model.EventiTotale;
 import it.univpm.ProgettoOOP.model.Ricerca;
@@ -34,7 +39,7 @@ class ControllerClass {
 	}
 	
 	@RequestMapping(value ="/events" , method=RequestMethod.POST)
-	public HashMap eventiTotale(@RequestBody JSONObject filter) {
+	public HashMap eventiTotale(@RequestBody JSONObject filter) throws DateNotValid, RangeNotValid, StateNotValid, KeywordNotValid, GenreNotValid {
 		HashMap output;
 		EventiTotale events = new EventiTotale(filter);
 		output = events.getOutput();
