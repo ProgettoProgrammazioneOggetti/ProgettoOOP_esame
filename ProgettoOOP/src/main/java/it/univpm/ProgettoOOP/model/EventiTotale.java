@@ -40,7 +40,6 @@ public class EventiTotale extends Statistic {
 	}
 
 	public HashMap statCalculator(JSONArray database) {
-		
 		return output;		
 	}
 
