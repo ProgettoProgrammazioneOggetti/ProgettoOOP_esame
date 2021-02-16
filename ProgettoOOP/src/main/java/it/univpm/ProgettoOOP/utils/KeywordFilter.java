@@ -17,7 +17,7 @@ public class KeywordFilter implements Filter{
 			return data;
 		else {
 			JSONArray output=new JSONArray();
-			Vector<String> in=(Vector<String>) keywords.get("in");
+			Vector<String> in=(Vector<String>) keywords.get("$in");
 			if(in.equals(null))
 				throw new KeywordNotValid();
 			else {

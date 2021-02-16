@@ -17,7 +17,7 @@ public class GenreFilter implements Filter{
 		if(genres.equals(null))
 			return data;
 		else {
-			Vector<String> in=(Vector<String>) genres.get("in");
+			Vector<String> in=(Vector<String>) genres.get("$in");
 			if(in.equals(null))
 				throw new GenreNotValid();
 			else {

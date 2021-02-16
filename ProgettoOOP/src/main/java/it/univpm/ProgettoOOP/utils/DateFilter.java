@@ -20,9 +20,9 @@ public class DateFilter implements Filter{
 		else {
 			JSONArray output=new JSONArray();
 			Iterator i=data.iterator();
-			String gte=(String) dates.get("gte");
+			String gte=(String) dates.get("$gte");
 			if(gte.equals(null)) {
-				Vector<String> bt=(Vector<String>) dates.get("bt");
+				Vector<String> bt=(Vector<String>) dates.get("$bt");
 				if(bt.equals(null))
 					throw new DateNotValid();
 				else {
