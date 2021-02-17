@@ -1,6 +1,8 @@
 package it.univpm.ProgettoOOP.model;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,35 +20,34 @@ import it.univpm.ProgettoOOP.utils.*;
 public class EventiTotale extends Statistic {
 	HashMap output;
 	
-	public EventiTotale(JSONObject filter) throws StateNotValid, KeywordNotValid, GenreNotValid, DateNotValid, RangeNotValid {
+	public EventiTotale(JSONObject filter) throws StateNotValid {
 		super(filter);
-		JSONArray database = new JSONArray();
-		JSONObject fulldata = new JSONObject();
-		Database data = new Database();
-		database = data.getDatabaseFromFile();
-		StateFilter filter1 = new StateFilter();
-		database = filter1.filter(database, filter);
-		KeywordFilter filter2 = new KeywordFilter();
-		database = filter2.filter(database, filter);
-		GenreFilter filter3 = new GenreFilter();
-		database = filter3.filter(database, filter);
-		DateFilter filter4 = new DateFilter();
-		database = filter4.filter(database, filter);
-		this.output = statCalculator(database);
+		this.statCalculator();
 	}
 
 	public HashMap getOutput() {
 		return output;
 	}
-
-	public HashMap statCalculator(JSONArray database) {
-		return output;		
-	}
-
+	
 	@Override
-	public void statCalculator() {
-		// TODO Auto-generated method stub
+	public void statCalculator() throws StateNotValid {
 		
+		JSONArray database = new JSONArray();
+		database = Database.getDatabaseFromFile();
+		JSONObject states=(JSONObject) filter.get("state");
+		
+		
+		Vector<String> in=(Vector<String>) states.get("in");
+		if(in.equals(null))
+			throw new StateNotValid();
+		else {
+			for(String s:in) {
+				JSONObject tempFilter = new JSONObject();
+				JSONObject body = new JSONObject();
+				body.put("$in", s);
+				tempFilter.put("state", body);
+			}
+		}
 	}
 
 }
