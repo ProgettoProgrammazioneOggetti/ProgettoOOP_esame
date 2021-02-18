@@ -48,8 +48,8 @@ class ControllerClass {
 	}
 	
 	@RequestMapping(value ="/genevents", method=RequestMethod.POST)
-	public JSONArray eventiPerGenere(@RequestBody JSONObject genfilter) throws DateNotValid, RangeNotValid, StateNotValid, GenreNotValid, KeywordNotValid {
-		JSONArray output;
+	public HashMap eventiPerGenere(@RequestBody JSONObject genfilter) throws DateNotValid, RangeNotValid, StateNotValid, GenreNotValid, KeywordNotValid {
+		HashMap output;
 		EventiPerGenere genevents = new EventiPerGenere(genfilter);
 		output = genevents.getOutput();
 		return output;
