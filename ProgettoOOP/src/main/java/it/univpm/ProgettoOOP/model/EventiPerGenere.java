@@ -38,7 +38,7 @@ public class EventiPerGenere extends Statistic {
 				JSONObject body = new JSONObject();
 				
 				body.put("$in", s);
-				tempFilter.put("state", body);
+				tempFilter.put("genre", body);
 				
 				StateFilter filter1 = new StateFilter();
 				database = filter1.filter(database, tempFilter);
