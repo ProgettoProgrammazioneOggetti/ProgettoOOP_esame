@@ -35,21 +35,21 @@ Di seguito si ha il diagramma delle sequenze di questa rotta
 `POST /events`
 
 Questa rotta permette di cercare tutti gli eventi [filtrandoli](#filtro) come spiegato successivamente. 
-Di seguito si ha il diagramma delle sequenze di questa rotta valido per un solo stato
+Di seguito si ha il diagramma delle sequenze di questa rotta
 ![Events Sequence Diagram](https://github.com/ProgettoProgrammazioneOggetti/ProgettoOOP_esame/blob/main/eventsSequence.png)
 
 ### 3) Ricerca eventi per genere
 `POST /genevents`
 
 Questa rotta permette di cercare tutti gli eventi raggruppandoli per genere e [filtrandoli](#filtro) come spiegato successivamente. 
-Di seguito si ha il diagramma delle sequenze di questa rotta valido per un solo genere
+Di seguito si ha il diagramma delle sequenze di questa rotta
 ![Genre Sequence Diagram](https://github.com/ProgettoProgrammazioneOggetti/ProgettoOOP_esame/blob/main/genreSequence.png)
 
 ### 4) Calcolo di statistiche riguardo gli eventi
 `POST /statistics`
 
 Questa rotta permette di ottenere in output i mesi col maggior numero di eventi, quelli con meno e il valore medio per ogni stato presente nel filtro, [filtrando](#filtro) il database anche per gli altri campi. 
-Di seguito si ha il diagramma delle sequenze di questa rotta valido per un solo stato
+Di seguito si ha il diagramma delle sequenze di questa rotta
 ![Statistics Sequence Diagram](https://github.com/ProgettoProgrammazioneOggetti/ProgettoOOP_esame/blob/main/statsSequence.png)
 
 ## Database

@@ -25,16 +25,34 @@ public class Database {
 		this();
 		boolean correct=true;
 		Iterator i=datab.iterator();
-		JSONArray database=Database.getDatabaseFromFile();
 		while(i.hasNext()) {
 			JSONObject temp=(JSONObject) i.next();
-			if(temp.get("i")==null)
+			//Controllo della struttura e della presenza delle informazioni essenziali
+			if(temp.get("name")==null || temp.get("info")!=null || temp.get("dates")==null || temp.get("classification")==null ||temp.get("_embedded")==null)
 				correct=false;
+			else {
+				JSONObject dates=(JSONObject)temp.get("dates");
+				JSONArray classifications=(JSONArray) temp.get("classifications");
+				JSONObject embedded=(JSONObject) temp.get("_embedded");
+				JSONArray venues=(JSONArray) embedded.get("venues");
+				JSONObject firstEl=(JSONObject) venues.get(0);
+				JSONObject state=(JSONObject) firstEl.get("state");
+				if(dates.get("start")==null || dates.get("end")==null || classifications.get(0)==null || state.get("stateCode")==null)
+					correct=false;
+				else {
+					firstEl=(JSONObject) classifications.get(0);
+					JSONObject genre=(JSONObject) firstEl.get("genre");
+					if(genre.get("name")==null)
+						correct=false;
+				}
+				
+			}
 		}
 		if(correct) {
 		Database.setDatabaseInFile(datab);}
 		else
-			throw new DatabaseNotValid(); 
+			{Database data=new Database();
+			throw new DatabaseNotValid(); }
 		
 	}
 	public static JSONArray getDatabaseFromFile()  {
