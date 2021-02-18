@@ -30,6 +30,7 @@ import it.univpm.ProgettoOOP.model.Stats;
  */
 class ControllerClass {
 	
+	//Prima rotta: cerca gli eventi e li restituisce filtrandoli per stato e keyword
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public JSONArray cercaEvento(@RequestParam(name = "name", defaultValue= "") String name,@RequestParam(name= "keyword") String keyword) {
 		JSONArray output;
@@ -38,6 +39,7 @@ class ControllerClass {
 		return output;
 	}
 	
+	//Seconda rotta: 
 	@RequestMapping(value ="/events" , method=RequestMethod.POST)
 	public HashMap eventiTotale(@RequestBody JSONObject filter) throws DateNotValid, RangeNotValid, StateNotValid, KeywordNotValid, GenreNotValid {
 		HashMap output;

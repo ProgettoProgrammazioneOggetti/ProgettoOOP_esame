@@ -3,6 +3,8 @@ package it.univpm.ProgettoOOP.testmodels;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,12 +27,12 @@ public class testDatabase1 {
 	}
 	
 	@Test
-	void Test1() {
+	void Test1() throws IOException {
 		assertNotNull(Database.getDatabaseFromFile());
 	}
 	
 	@Test
-	void Test2() {
+	void Test2() throws IOException {
 		assertTrue(!Database.getDatabaseFromFile().isEmpty());
 	}
 

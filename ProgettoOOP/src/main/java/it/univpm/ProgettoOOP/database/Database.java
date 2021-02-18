@@ -1,11 +1,14 @@
 package it.univpm.ProgettoOOP.database;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
@@ -73,12 +76,16 @@ public class Database {
 	/**
 	 * Metodo che importa il database dal file
 	 * @return JSONArray contenente il database usabile per statistiche e filtri
+	 * @throws IOException 
 	 */
-	public static JSONArray getDatabaseFromFile()  {
+	public static JSONArray getDatabaseFromFile() throws IOException  {
 		JSONArray output=new JSONArray();
 		JSONParser parser=new JSONParser();
 		try {
-		    output =(JSONArray) parser.parse("database.json");
+			
+			File file = new File("database.json");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		    output =(JSONArray) parser.parse(reader.readLine());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -22,6 +22,7 @@ public class Stats extends Statistic {
 	
 	public Stats(JSONObject stats) throws StateNotValid, DateNotValid, RangeNotValid, GenreNotValid, KeywordNotValid {
 		super(stats);
+		this.statCalculator();
 	}
 
 	public JSONArray getOutput() {
