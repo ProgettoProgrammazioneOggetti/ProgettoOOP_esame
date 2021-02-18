@@ -8,8 +8,20 @@ import org.json.simple.JSONObject;
 
 import it.univpm.ProgettoOOP.exception.StateNotValid;
 
+/**
+ * @author Paolo, Maurizio
+ *
+ * Classe che implementa il filtraggio in base agli stati
+ */
 public class StateFilter implements Filter{
 
+	/**
+	 *Metodo che implementa il filtraggio
+	 * @param data JSONArray contenente il database da filtrare
+	 * @param filter JSONObject contenente il filtro in formato json
+	 * @return JSONArray contenente il  database filtrato
+	 * @throws StateNotValid Errore restituito se gli stati non sono stati inseriti correttamente nel filtro
+	 */
 	@Override
 	public  JSONArray filter(JSONArray data, JSONObject filter) throws StateNotValid{
 		JSONObject states=(JSONObject) filter.get("state");

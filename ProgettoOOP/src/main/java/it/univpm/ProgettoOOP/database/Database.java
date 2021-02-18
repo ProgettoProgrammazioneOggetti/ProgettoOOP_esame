@@ -14,13 +14,26 @@ import org.json.simple.parser.ParseException;
 import it.univpm.ProgettoOOP.exception.DatabaseNotValid;
 import it.univpm.ProgettoOOP.utils.APIConnection;
 
+/**
+ * @author Paolo, Maurizio
+ *
+ *Classe che gestisce il database sia nel contatto con l'API che con il file di backup
+ */
 public class Database {
 	
+	/**
+	 * Costruttore della classe in assenza di parametri 
+	 */
 	public Database() {
 		APIConnection data=new APIConnection();
 		data.openConnection();
 		Database.setDatabaseInFile(data.getData());
 	}
+	/**
+	 * Costruttore con database da verificare
+	 * @param datab JSONArray contenente il database impostato dall'utente
+	 * @throws DatabaseNotValid Errore restistuito nel caso in cui il database non sia corretto, viene dato questo errore in output
+	 */
 	public Database(JSONArray datab) throws DatabaseNotValid{
 		this();
 		boolean correct=true;
@@ -55,6 +68,10 @@ public class Database {
 			throw new DatabaseNotValid(); }
 		
 	}
+	/**
+	 * Metodo che importa il database dal file
+	 * @return JSONArray contenente il database usabile per statistiche e filtri
+	 */
 	public static JSONArray getDatabaseFromFile()  {
 		JSONArray output=new JSONArray();
 		JSONParser parser=new JSONParser();
@@ -69,6 +86,10 @@ public class Database {
 		return output;
 		
 	}
+	/**
+	 * Classe che scrive il database generato nel file
+	 * @param data JSONArray contenente il database da salvare in file
+	 */
 	private static void setDatabaseInFile(JSONArray data) {
 		try {
 			BufferedWriter writer=new BufferedWriter(new FileWriter("database.java"));

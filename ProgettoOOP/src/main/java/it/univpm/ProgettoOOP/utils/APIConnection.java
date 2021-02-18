@@ -14,9 +14,23 @@ import org.json.simple.parser.ParseException;
 
 import it.univpm.ProgettoOOP.exception.KeywordNotValid;
 
+/**
+ * @author Paolo, Maurizio
+ *
+ * Classe per la gestione della comunicazione con l'API esterna
+ */
 public class APIConnection {
+	/**
+	 * Contenuto della chiamata all'API
+	 */
 	private JSONArray data;
-	private static String APIkey="xqGfLV1EpP1kD4akgep0Yq75bh4gh8fZ";
+	/**
+	 * Chiave necessaria per la chiamata all'API
+	 */
+	private final String APIkey="xqGfLV1EpP1kD4akgep0Yq75bh4gh8fZ";
+	/**
+	 * Primo metodo per la connessione all'API senza parametri che carica la risposta dell'API nel JSONArray data
+	 */
 	public void openConnection() {
 		JSONParser parser=new JSONParser();
 		JSONObject embedded=null;
@@ -42,6 +56,11 @@ public class APIConnection {
 			
 		
 	}
+	/**
+	 * Secondo metodo per la connessione all'API che carica la risposta nel JSONArray data
+	 * @param state String contenente il codice dello stato
+	 * @param keyword Vettore contenente le keyword
+	 */
 	public void openConnection(String state, Vector<String> keyword)  {
 		JSONObject ffilter= new JSONObject();
 		JSONParser parser=new JSONParser();
