@@ -17,19 +17,48 @@ import it.univpm.ProgettoOOP.utils.GenreFilter;
 import it.univpm.ProgettoOOP.utils.KeywordFilter;
 import it.univpm.ProgettoOOP.utils.StateFilter;
 
+/**
+ * @author Maurizio, Paolo
+ *
+ *Classe che gestisce la rotta "/statistics"
+ */
 public class Stats extends Statistic {
+	/**
+	 * JSONArray contenente l'output
+	 */
 	JSONArray output;
 	
+	/**
+	 * Costruttore che richiama il costruttore della superclasse
+	 * @param stats JSONObject contenente il filtro
+	 * @throws StateNotValid
+	 * @throws DateNotValid
+	 * @throws RangeNotValid
+	 * @throws GenreNotValid
+	 * @throws KeywordNotValid
+	 */
 	public Stats(JSONObject stats) throws StateNotValid, DateNotValid, RangeNotValid, GenreNotValid, KeywordNotValid {
 		super(stats);
 		this.statCalculator();
 	}
 
+	/**
+	 * Metodo get dell' output
+	 * @return JSONArray contenente l'output della rotta
+	 */
 	public JSONArray getOutput() {
 		return output;
 	}
 
 
+	/**
+	 *Metodo che elabora l'output della rotta e lo carica nel relativo JSONArray
+	 * @throws StateNotValid
+	 * @throws GenreNotValid
+	 * @throws DateNotValid
+	 * @throws RangeNotValid
+	 * @throws KeywordNotValid
+	 */
 	@Override
 	public void statCalculator() throws StateNotValid, DateNotValid, RangeNotValid, GenreNotValid, KeywordNotValid {
 		JSONArray database = new JSONArray();

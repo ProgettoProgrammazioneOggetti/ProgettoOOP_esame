@@ -17,18 +17,42 @@ import it.univpm.ProgettoOOP.exception.RangeNotValid;
 import it.univpm.ProgettoOOP.exception.StateNotValid;
 import it.univpm.ProgettoOOP.utils.*;
 
+/**
+ * @author Maurizio, Paolo
+ *
+ *Classe che gestisce la rotta "/events"
+ */
 public class EventiTotale extends Statistic {
+	/**
+	 * Hashmap contenente l'output della rotta
+	 */
 	HashMap output;
 	
+	/**
+	 * Costruttore della classe che richiama il costruttore della super classe
+	 * @param filter JSONObject contenente il filtro
+	 * @throws StateNotValid
+	 * @throws DateNotValid
+	 * @throws RangeNotValid
+	 * @throws GenreNotValid
+	 * @throws KeywordNotValid
+	 */
 	public EventiTotale(JSONObject filter) throws StateNotValid, DateNotValid, RangeNotValid, GenreNotValid, KeywordNotValid {
 		super(filter);
 		this.statCalculator();
 	}
 
+	/**
+	 * Metodo get dell'output
+	 * @return Hashmap contenente l'output
+	 */
 	public HashMap getOutput() {
 		return output;
 	}
 	
+	/**
+	 *Metodo che elabora l'output e lo carica nell'Hashmap
+	 */
 	@Override
 	public void statCalculator() throws StateNotValid, GenreNotValid, DateNotValid, RangeNotValid, KeywordNotValid {
 		

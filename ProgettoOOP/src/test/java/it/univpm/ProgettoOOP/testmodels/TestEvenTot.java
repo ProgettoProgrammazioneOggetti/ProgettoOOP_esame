@@ -14,6 +14,11 @@ import it.univpm.ProgettoOOP.exception.RangeNotValid;
 import it.univpm.ProgettoOOP.exception.StateNotValid;
 import it.univpm.ProgettoOOP.model.EventiTotale;
 
+/**
+ * @author Maurizio, Paolo
+ *
+ *Classe che testa le funzionalità della classe EventiTotale
+ */
 public class TestEvenTot {
 	
 	private EventiTotale tot;
@@ -28,11 +33,17 @@ public class TestEvenTot {
 		
 	}
 	
+	/**
+	 * Test che controlla che l'output generato non sia nullo
+	 */
 	@Test
 	void Test1() {
 		assertNotNull(tot.getOutput());
 	}
 	
+	/**
+	 * Test che controlla che l'output generato non sia vuoto
+	 */
 	@Test
 	void Test2() {
 		assertTrue(tot.getOutput().isEmpty());
