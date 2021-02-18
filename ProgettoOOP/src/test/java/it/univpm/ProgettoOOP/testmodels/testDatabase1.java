@@ -15,7 +15,7 @@ import it.univpm.ProgettoOOP.model.Ricerca;
 /**
  * @author Maurizio, Paolo
  *
- *Classe che contiene i test per la classe database
+ *Classe che contiene i test per la classe Database
  */
 public class testDatabase1 {
 	
