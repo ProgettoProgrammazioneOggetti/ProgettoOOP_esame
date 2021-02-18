@@ -40,11 +40,11 @@ public class KeywordFilter implements Filter{
 						String name=(String) event.get("name");
 						if(name.contains(s))
 							output.add(event);
-						else {
+						/*else {
 							String info=(String) event.get("info");
 							if(info.contains(s))
 								output.add(event);
-						}
+						}*/
 					}
 				}
 				return output;

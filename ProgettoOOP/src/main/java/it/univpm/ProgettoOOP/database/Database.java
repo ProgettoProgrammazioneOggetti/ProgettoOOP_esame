@@ -2,6 +2,8 @@ package it.univpm.ProgettoOOP.database;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
@@ -76,9 +78,7 @@ public class Database {
 		JSONArray output=new JSONArray();
 		JSONParser parser=new JSONParser();
 		try {
-			File file=new File("database.json");
-			System.out.println(file.getAbsolutePath());
-			output=(JSONArray) parser.parse("database.json");
+		    output =(JSONArray) parser.parse("database.json");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class Database {
 	 */
 	private static void setDatabaseInFile(JSONArray data) {
 		try {
-			BufferedWriter writer=new BufferedWriter(new FileWriter("database.java"));
+			BufferedWriter writer=new BufferedWriter(new FileWriter("database.json"));
 			writer.write(data.toJSONString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

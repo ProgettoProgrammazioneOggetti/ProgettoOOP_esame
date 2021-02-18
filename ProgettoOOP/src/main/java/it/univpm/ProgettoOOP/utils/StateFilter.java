@@ -31,7 +31,7 @@ public class StateFilter implements Filter{
 		{
 			JSONArray output=new JSONArray();
 			
-			Vector<String> in=(Vector<String>) states.get("$in");
+			Vector<String> in= (Vector<String>) states.get("$in");
 			if(in.equals(null))
 				throw new StateNotValid();
 			else {
