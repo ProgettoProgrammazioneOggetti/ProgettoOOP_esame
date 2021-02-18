@@ -78,14 +78,11 @@ public class Database {
 	 * @return JSONArray contenente il database usabile per statistiche e filtri
 	 * @throws IOException 
 	 */
-	public static JSONArray getDatabaseFromFile() throws IOException  {
+	public static JSONArray getDatabaseFromFile()  {
 		JSONArray output=new JSONArray();
 		JSONParser parser=new JSONParser();
 		try {
-			
-			File file = new File("database.json");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		    output =(JSONArray) parser.parse(reader.readLine());
+		    output =(JSONArray) parser.parse("database.json");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

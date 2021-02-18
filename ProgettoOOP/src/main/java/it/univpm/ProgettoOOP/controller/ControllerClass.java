@@ -3,6 +3,7 @@
  */
 package it.univpm.ProgettoOOP.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -25,8 +26,8 @@ import it.univpm.ProgettoOOP.model.Statistic;
 import it.univpm.ProgettoOOP.model.Stats;
 /**
  * @author Maurizio, Paolo
- * 
- *Classe contenente le rotte dell'applicazione
+ *
+ * Classe contenente le rotte dell'applicazione
  */
 class ControllerClass {
 	
@@ -105,7 +106,7 @@ class ControllerClass {
 	 * @return JSONarray contenente il database
 	 */
 	@RequestMapping(value="/database", method=RequestMethod.GET)
-	public JSONArray getDatabase() {
+	public JSONArray getDatabase() throws IOException {
 		JSONArray output = Database.getDatabaseFromFile();
 		return output;
 	}
@@ -113,9 +114,10 @@ class ControllerClass {
 	/**
 	 * Rotta che permette di resettare o aggiornare il database
 	 * @return String contenente il successo o fallimento dell'operazione
+	 * 
 	 */
 	@RequestMapping(value="/resetDatabase", method=RequestMethod.GET)
-	public String resetDatabase() {
+	public String resetDatabase() throws IOException {
 		String done = "Reset riuscito con successo";
 		String notDone="Il database non si è aggiornato";
 		JSONArray oldVersion = Database.getDatabaseFromFile();
@@ -130,9 +132,10 @@ class ControllerClass {
 	/**
 	 * Rotta che permette di controllare il database in uso dopo modifiche dell'utente
 	 * @return Stringa contenente il successo dell'operazione
+	 *
 	 */
 	@RequestMapping(value="/setDatabase" , method=RequestMethod.GET)
-	public String setDatabase() {
+	public String setDatabase() throws IOException {
 		JSONArray data = Database.getDatabaseFromFile();
 		try {
 			Database database= new Database(data);
