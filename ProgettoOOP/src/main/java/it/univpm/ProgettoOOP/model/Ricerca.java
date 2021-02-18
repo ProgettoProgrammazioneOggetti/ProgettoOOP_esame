@@ -14,22 +14,26 @@ public class Ricerca {
 		Vector<String> change = cambioVar(keyword);
 		connect.openConnection(name, change);
 		this.output= connect.getData();
+		this.name = name;
+		this.keyword=keyword;
 	}
 	
 	public Vector<String> cambioVar(String keyword) {
 		Vector<String> changed= new Vector<String>();
-			for(int i = 0; i<keyword.length();i++) {
-			int temp = 0;
-			if(keyword.substring(i)==",") {
-				changed.add(keyword.substring(temp, i));
-				temp = i;
-			}
+		int temp =0;
+		while(keyword.indexOf(',')!= -1) {
+			changed.add(keyword.substring(temp, keyword.indexOf(',')));
+			temp = keyword.indexOf(',') + 1;
+			keyword= keyword.substring(temp);
 		}
+			changed.add(keyword);
+
 		return changed;
 	}
 
 	public JSONArray getOutput() {
 		return output;
 	}
+
 
 }

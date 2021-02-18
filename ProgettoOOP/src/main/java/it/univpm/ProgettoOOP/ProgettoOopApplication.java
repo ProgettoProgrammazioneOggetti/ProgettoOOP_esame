@@ -11,6 +11,7 @@ public class ProgettoOopApplication {
 	public static void main(String[] args) {
 		Database data=new Database();
 		SpringApplication.run(ProgettoOopApplication.class, args);
+		
 	}
 
 }

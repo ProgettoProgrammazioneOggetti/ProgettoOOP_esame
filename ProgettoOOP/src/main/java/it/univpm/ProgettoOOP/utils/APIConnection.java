@@ -16,7 +16,7 @@ import it.univpm.ProgettoOOP.exception.KeywordNotValid;
 
 public class APIConnection {
 	private JSONArray data;
-	private static String APIkey="xqGfLV1EpP1kD4akgep0Yq75bh4gh8fZ";
+	private static String APIkey="B1DdF0t3tyWSZywL0iAvB1pZmXN2m833";
 	public void openConnection() {
 		JSONParser parser=new JSONParser();
 		JSONObject embedded=null;
@@ -45,9 +45,9 @@ public class APIConnection {
 	public void openConnection(String state, Vector<String> keyword)  {
 		JSONObject ffilter= new JSONObject();
 		JSONParser parser=new JSONParser();
-		JSONObject embedded=null;
+		JSONObject embedded= new JSONObject();
 		try {
-			String url="https://app.ticketmaster.com/discovery/v2/events?startDateTime=2021-01-01T00:00:00Z&endDateTime=2021-12-31T23:59:59Z&stateCode="+state+"&apikey="+APIkey;
+			String url="https://app.ticketmaster.com/discovery/v2/events?startDateTime=2021-01-01T00:00:00Z&endDateTime=2021-12-31T23:59:59Z&stateCode=FL&apikey=B1DdF0t3tyWSZywL0iAvB1pZmXN2m833"; //correggere "+state+" e "+APIkey"
 			URLConnection URL=new URL(url).openConnection();
 			BufferedReader reader=new BufferedReader(new InputStreamReader(URL.getInputStream()));
 			String input=reader.readLine();
@@ -60,14 +60,18 @@ public class APIConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try{if(!embedded.equals(null)) {
+		try{
+			if(!embedded.equals(null)) {
 			JSONArray database=(JSONArray) embedded.get("events");
-			ffilter.put("keyword", keyword);
+			JSONObject temp = new JSONObject();
+			temp.put("$in", keyword);
+			ffilter.put("keyword", temp);
 			KeywordFilter filt=new KeywordFilter();
-			this.data=filt.filter(database, ffilter); }
+			this.data=filt.filter(database, ffilter);
+					}
 		}
 		catch(KeywordNotValid k) {
-			//to complete
+			k.printStackTrace();
 		}		
 	}
 	public JSONArray getData() {
